@@ -31,6 +31,7 @@ namespace SharpChess.Model
     #region Using
 
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Reflection;
     using System.Xml;
@@ -473,6 +474,11 @@ namespace SharpChess.Model
         /// </summary>
         public static bool UseRandomOpeningMoves { get; set; }
 
+        /// <summary>
+        /// Gets or set a value indicating whether the start of the board should be randomized via Fischer
+        /// </summary>
+        public static bool UseFischerRandomChess { get; set; }
+
         #endregion
 
         #region Public Methods
@@ -547,7 +553,13 @@ namespace SharpChess.Model
         /// </summary>
         public static void New()
         {
-            New(string.Empty);
+            if (UseFischerRandomChess)
+            {
+                New(FischlFENGenerator.Generate());
+            } else
+            {
+                New(string.Empty);
+            }
         }
 
         /// <summary>

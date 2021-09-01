@@ -188,7 +188,7 @@ namespace SharpChess.Model
         #endregion
 
         #region Public Methods
-
+        
         /// <summary>
         /// The append piece path.
         /// </summary>

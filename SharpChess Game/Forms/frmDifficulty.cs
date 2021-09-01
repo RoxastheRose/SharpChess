@@ -163,6 +163,7 @@ namespace SharpChess
         /// The rad level.
         /// </summary>
         private RadioButton radLevel;
+        private CheckBox FischerChessCheckbox;
 
         /// <summary>
         /// The trk level.
@@ -237,7 +238,7 @@ namespace SharpChess
         /// </summary>
         private void InitializeComponent()
         {
-            System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(frmDifficulty));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDifficulty));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.chkEnablePondering = new System.Windows.Forms.CheckBox();
@@ -252,15 +253,16 @@ namespace SharpChess
             this.lblClockMinutes = new System.Windows.Forms.Label();
             this.lblClockMovesIn = new System.Windows.Forms.Label();
             this.grpLevel = new System.Windows.Forms.GroupBox();
+            this.FischerChessCheckbox = new System.Windows.Forms.CheckBox();
             this.trkLevel = new System.Windows.Forms.TrackBar();
             this.lblLevel = new System.Windows.Forms.Label();
             this.radLevel = new System.Windows.Forms.RadioButton();
             this.grpCustom = new System.Windows.Forms.GroupBox();
             this.chkUseRandomOpeningMoves = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.radCustom = new System.Windows.Forms.RadioButton();
             this.numMaximumSearchDepth = new System.Windows.Forms.NumericUpDown();
             this.chkRestrictSearchDepth = new System.Windows.Forms.CheckBox();
-            this.radCustom = new System.Windows.Forms.RadioButton();
             this.grpClock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMoves)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinutes)).BeginInit();
@@ -274,6 +276,7 @@ namespace SharpChess
             // 
             this.btnOK.Location = new System.Drawing.Point(288, 352);
             this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -283,6 +286,7 @@ namespace SharpChess
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(368, 352);
             this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -335,52 +339,52 @@ namespace SharpChess
             // numMoves
             // 
             this.numMoves.Location = new System.Drawing.Point(8, 24);
-            this.numMoves.Maximum = new System.Decimal(new int[] {
-																	 999,
-																	 0,
-																	 0,
-																	 0});
-            this.numMoves.Minimum = new System.Decimal(new int[] {
-																	 1,
-																	 0,
-																	 0,
-																	 0});
+            this.numMoves.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numMoves.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMoves.Name = "numMoves";
             this.numMoves.Size = new System.Drawing.Size(40, 20);
             this.numMoves.TabIndex = 10;
             this.numMoves.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numMoves.Value = new System.Decimal(new int[] {
-																   1,
-																   0,
-																   0,
-																   0});
-            this.numMoves.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numMoves_KeyUp);
+            this.numMoves.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMoves.ValueChanged += new System.EventHandler(this.numMoves_ValueChanged);
+            this.numMoves.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numMoves_KeyUp);
             // 
             // numMinutes
             // 
             this.numMinutes.Location = new System.Drawing.Point(104, 24);
-            this.numMinutes.Maximum = new System.Decimal(new int[] {
-																	   999,
-																	   0,
-																	   0,
-																	   0});
-            this.numMinutes.Minimum = new System.Decimal(new int[] {
-																	   1,
-																	   0,
-																	   0,
-																	   0});
+            this.numMinutes.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numMinutes.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMinutes.Name = "numMinutes";
             this.numMinutes.Size = new System.Drawing.Size(40, 20);
             this.numMinutes.TabIndex = 14;
             this.numMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numMinutes.Value = new System.Decimal(new int[] {
-																	 1,
-																	 0,
-																	 0,
-																	 0});
-            this.numMinutes.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numMinutes_KeyUp);
+            this.numMinutes.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMinutes.ValueChanged += new System.EventHandler(this.numMinutes_ValueChanged);
+            this.numMinutes.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numMinutes_KeyUp);
             // 
             // lblAverageSeconds
             // 
@@ -403,7 +407,7 @@ namespace SharpChess
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label1.Location = new System.Drawing.Point(192, 24);
             this.label1.Name = "label1";
@@ -434,12 +438,22 @@ namespace SharpChess
             // 
             // grpLevel
             // 
+            this.grpLevel.Controls.Add(this.FischerChessCheckbox);
             this.grpLevel.Controls.Add(this.trkLevel);
             this.grpLevel.Location = new System.Drawing.Point(16, 24);
             this.grpLevel.Name = "grpLevel";
-            this.grpLevel.Size = new System.Drawing.Size(424, 72);
+            this.grpLevel.Size = new System.Drawing.Size(424, 104);
             this.grpLevel.TabIndex = 6;
             this.grpLevel.TabStop = false;
+            // 
+            // FischerChessCheckbox
+            // 
+            this.FischerChessCheckbox.Location = new System.Drawing.Point(16, 75);
+            this.FischerChessCheckbox.Name = "FischerChessCheckbox";
+            this.FischerChessCheckbox.Size = new System.Drawing.Size(144, 16);
+            this.FischerChessCheckbox.TabIndex = 18;
+            this.FischerChessCheckbox.Text = "Fischer Random Chess?";
+            this.FischerChessCheckbox.CheckedChanged += new System.EventHandler(this.fischerRandomCheckbox_CheckedChanged);
             // 
             // trkLevel
             // 
@@ -455,7 +469,7 @@ namespace SharpChess
             // 
             // lblLevel
             // 
-            this.lblLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+            this.lblLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLevel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblLevel.Location = new System.Drawing.Point(160, 16);
             this.lblLevel.Name = "lblLevel";
@@ -479,12 +493,13 @@ namespace SharpChess
             // 
             this.grpCustom.Controls.Add(this.chkUseRandomOpeningMoves);
             this.grpCustom.Controls.Add(this.label5);
+            this.grpCustom.Controls.Add(this.radCustom);
             this.grpCustom.Controls.Add(this.numMaximumSearchDepth);
             this.grpCustom.Controls.Add(this.chkRestrictSearchDepth);
             this.grpCustom.Controls.Add(this.grpClock);
             this.grpCustom.Controls.Add(this.chkEnablePondering);
             this.grpCustom.Enabled = false;
-            this.grpCustom.Location = new System.Drawing.Point(16, 112);
+            this.grpCustom.Location = new System.Drawing.Point(16, 151);
             this.grpCustom.Name = "grpCustom";
             this.grpCustom.Size = new System.Drawing.Size(424, 224);
             this.grpCustom.TabIndex = 16;
@@ -508,28 +523,37 @@ namespace SharpChess
             this.label5.Text = "ply(s)";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // radCustom
+            // 
+            this.radCustom.Location = new System.Drawing.Point(8, 0);
+            this.radCustom.Name = "radCustom";
+            this.radCustom.Size = new System.Drawing.Size(64, 24);
+            this.radCustom.TabIndex = 17;
+            this.radCustom.Text = "Custom";
+            this.radCustom.CheckedChanged += new System.EventHandler(this.radCustom_CheckedChanged);
+            // 
             // numMaximumSearchDepth
             // 
             this.numMaximumSearchDepth.Location = new System.Drawing.Point(152, 128);
-            this.numMaximumSearchDepth.Maximum = new System.Decimal(new int[] {
-																				  32,
-																				  0,
-																				  0,
-																				  0});
-            this.numMaximumSearchDepth.Minimum = new System.Decimal(new int[] {
-																				  1,
-																				  0,
-																				  0,
-																				  0});
+            this.numMaximumSearchDepth.Maximum = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            this.numMaximumSearchDepth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numMaximumSearchDepth.Name = "numMaximumSearchDepth";
             this.numMaximumSearchDepth.Size = new System.Drawing.Size(40, 20);
             this.numMaximumSearchDepth.TabIndex = 9;
             this.numMaximumSearchDepth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numMaximumSearchDepth.Value = new System.Decimal(new int[] {
-																				1,
-																				0,
-																				0,
-																				0});
+            this.numMaximumSearchDepth.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // chkRestrictSearchDepth
             // 
@@ -540,22 +564,12 @@ namespace SharpChess
             this.chkRestrictSearchDepth.Text = "Restrict search depth to";
             this.chkRestrictSearchDepth.CheckedChanged += new System.EventHandler(this.chkRestrictSearchDepth_CheckedChanged);
             // 
-            // radCustom
-            // 
-            this.radCustom.Location = new System.Drawing.Point(24, 104);
-            this.radCustom.Name = "radCustom";
-            this.radCustom.Size = new System.Drawing.Size(64, 24);
-            this.radCustom.TabIndex = 17;
-            this.radCustom.Text = "Custom";
-            this.radCustom.CheckedChanged += new System.EventHandler(this.radCustom_CheckedChanged);
-            // 
             // frmDifficulty
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(458, 384);
+            this.ClientSize = new System.Drawing.Size(458, 381);
             this.Controls.Add(this.lblLevel);
             this.Controls.Add(this.radLevel);
-            this.Controls.Add(this.radCustom);
             this.Controls.Add(this.grpLevel);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
@@ -573,10 +587,12 @@ namespace SharpChess
             ((System.ComponentModel.ISupportInitialize)(this.numMoves)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinutes)).EndInit();
             this.grpLevel.ResumeLayout(false);
+            this.grpLevel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkLevel)).EndInit();
             this.grpCustom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numMaximumSearchDepth)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         /// <summary>
@@ -763,6 +779,7 @@ namespace SharpChess
             Game.MaximumSearchDepth = this.chkRestrictSearchDepth.Checked ? (int)this.numMaximumSearchDepth.Value : 0;
             Game.EnablePondering = this.chkEnablePondering.Checked;
             Game.UseRandomOpeningMoves = this.chkUseRandomOpeningMoves.Checked;
+            
 
             this.m_blnConfirmed = true;
 
@@ -912,5 +929,10 @@ namespace SharpChess
         }
 
         #endregion
+
+        private void fischerRandomCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Game.UseFischerRandomChess = true;
+        }
     }
 }
